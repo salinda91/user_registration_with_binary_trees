@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRegistrationRequest;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,12 @@ class UserController extends Controller
        $this->userService = $userService;
    }
 
-    public function test(){
-        $user = $this->userService->get();
-        dd($user);
+    public function registration(UserRegistrationRequest $request){
+
+    
+        dd($this->userService->userStore($request->all()));
+
+        // $user = $this->userService->get();
+        // dd($user);
     }
 }
